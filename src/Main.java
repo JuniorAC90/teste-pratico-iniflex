@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -78,6 +80,9 @@ public class Main {
         Collections.sort(listaDeFuncionarios);
         System.out.println("Todos os funcionários em ordem alfabética: ");
         listarFuncionarios(listaDeFuncionarios);
+
+        // 3.11 Imprimir o total de salários
+        imprimirTotalDeSalarios(listaDeFuncionarios);
     }
 
     private static void listarFuncionarios(List<Funcionario> lista) {
@@ -154,6 +159,18 @@ public class Main {
             System.out.println(funcionariocomMaiorIdade.getNome() + "\t" + funcionariocomMaiorIdade.getIdade());
         }
 
+        System.out.println("---------------------------------------------------------");
+        System.out.println();
+    }
+
+    private static void imprimirTotalDeSalarios(List<Funcionario> lista) {
+        BigDecimal totalDeSalarios = lista.stream()
+                                        .map(Funcionario::getSalario)
+                                        .reduce(BigDecimal.ZERO, BigDecimal::add);
+        System.out.println("Total de Salários: ");
+        DecimalFormat salarioFormatado = new DecimalFormat("###,###.00");
+        String totalDeSalariosFormatado = salarioFormatado.format(totalDeSalarios);
+        System.out.println(totalDeSalariosFormatado);
         System.out.println("---------------------------------------------------------");
         System.out.println();
     }
