@@ -1,6 +1,7 @@
 package entidades;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 
@@ -8,7 +9,7 @@ public class Funcionario extends Pessoa implements Comparable <Pessoa> {
     private BigDecimal salario;
     private String funcao;
 
-    private DecimalFormat salarioFormatado = new DecimalFormat("###,###.00");
+    private DecimalFormat valorFormatado = new DecimalFormat("###,###.00");
 
     public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario, String funcao) {
         super(nome, dataNascimento);
@@ -20,8 +21,8 @@ public class Funcionario extends Pessoa implements Comparable <Pessoa> {
         return salario;
     }
 
-    public String getSalarioFormatado() {
-        return salarioFormatado.format(this.getSalario());
+    public String getValorFormatado() {
+        return valorFormatado.format(this.getSalario());
     }
 
     public String getFuncao() {
@@ -33,11 +34,17 @@ public class Funcionario extends Pessoa implements Comparable <Pessoa> {
         this.salario = this.getSalario().add(dezPorCentoDoSalario);
     }
 
+    public String quantidadeDeSalariosMinimos() {
+        Double quantidade = this.getSalario()
+                            .divide(new BigDecimal("1212.00"), 2, RoundingMode.HALF_UP).doubleValue();
+        return valorFormatado.format(quantidade);
+    }
+
     @Override
     public String toString() {
         return this.getNome() + "\t" +
                 this.getDataNascimentoFormatada() + "\t\t" +
-                this.getSalarioFormatado() + "\t\t" +
+                this.getValorFormatado() + "\t\t" +
                 this.getFuncao();
     }
 

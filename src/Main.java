@@ -83,6 +83,9 @@ public class Main {
 
         // 3.11 Imprimir o total de salários
         imprimirTotalDeSalarios(listaDeFuncionarios);
+
+        // 3.12 Imprimir quantos salários mínimos ganha cada funcionário
+        imprimirTotalDeSalariosMinimoPorFuncionario(listaDeFuncionarios);
     }
 
     private static void listarFuncionarios(List<Funcionario> lista) {
@@ -171,6 +174,18 @@ public class Main {
         DecimalFormat salarioFormatado = new DecimalFormat("###,###.00");
         String totalDeSalariosFormatado = salarioFormatado.format(totalDeSalarios);
         System.out.println(totalDeSalariosFormatado);
+        System.out.println("---------------------------------------------------------");
+        System.out.println();
+    }
+
+    private static void imprimirTotalDeSalariosMinimoPorFuncionario(List<Funcionario> lista) {
+        System.out.println("Quantidade de salários mínimos por funcionário: ");
+        System.out.println("Nome\tQuantidade de salários mínimos");
+
+        for (Funcionario f : lista) {
+            System.out.println(f.getNome() + "\t" + f.quantidadeDeSalariosMinimos());
+        }
+
         System.out.println("---------------------------------------------------------");
         System.out.println();
     }
