@@ -58,6 +58,10 @@ public class Main {
         System.out.println("Todos os funcionários com os dados formatados: ");
         listarFuncionarios(listaDeFuncionarios);
 
+        // 3.4 Aumento de 10% do salário
+        aumentarDezPorCentoDaListaDeFuncionarios(listaDeFuncionarios);
+        System.out.println("Lista de funcionários atualizada com o aumento salarial.");
+        listarFuncionarios(listaDeFuncionarios);
     }
 
     private static void listarFuncionarios(List<Funcionario> lista) {
@@ -68,4 +72,11 @@ public class Main {
         System.out.println("---------------------------------------------------------");
         System.out.println();
     }
+
+    private static void aumentarDezPorCentoDaListaDeFuncionarios(List<Funcionario> lista) {
+        for (Funcionario f : lista) {
+            f.aumentarDezPorCentoDoSalário();
+        }
+    }
+
 }

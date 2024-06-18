@@ -28,6 +28,11 @@ public class Funcionario extends Pessoa {
         return funcao;
     }
 
+    public void aumentarDezPorCentoDoSalário() {
+        BigDecimal dezPorCentoDoSalario = this.getSalario().multiply(new BigDecimal("0.10"));
+        this.salario = this.getSalario().add(dezPorCentoDoSalario);
+    }
+
     @Override
     public String toString() {
         return this.getNome() + "\t" +
