@@ -1,13 +1,10 @@
 import entidades.Funcionario;
 
-import javax.swing.text.DateFormatter;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -57,12 +54,14 @@ public class Main {
         System.out.println("Funcionário João Removido: ");
         listarFuncionarios(listaDeFuncionarios);
 
-
+        // 3.3 Imprimindo todos os funcionários com as datas e salários formatados
+        System.out.println("Todos os funcionários com os dados formatados: ");
+        listarFuncionarios(listaDeFuncionarios);
 
     }
 
     private static void listarFuncionarios(List<Funcionario> lista) {
-        System.out.println("Nome\tData Nascimento\tSalário\t\tFunção");
+        System.out.println("Nome\tData Nascimento\tSalário\t\t\tFunção");
         for (Funcionario f : lista) {
             System.out.println(f);
         }
