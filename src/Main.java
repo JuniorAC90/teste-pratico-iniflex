@@ -47,16 +47,15 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        System.out.println("Todos os funcionários: ");
+        System.out.println("Todos os funcionários inseridos: ");
         listarFuncionarios(listaDeFuncionarios);
 
         // 3.2 Remover o funcionário João
         listaDeFuncionarios.removeIf(f -> f.getNome().equals("João"));
-        System.out.println("Funcionário João Removido: ");
-        listarFuncionarios(listaDeFuncionarios);
+        System.out.println("Funcionário João Removido. ");
 
-        // 3.3 Imprimindo todos os funcionários com as datas e salários formatados
-        System.out.println("Todos os funcionários com os dados formatados: ");
+        // 3.3 Imprimindo todos os funcionários após remover o funcionário João
+        System.out.println("Todos os funcionários após remoção de João. ");
         listarFuncionarios(listaDeFuncionarios);
 
         // 3.4 Aumento de 10% do salário
@@ -119,7 +118,7 @@ public class Main {
     private static void listarFuncionariosAgrupadosPorFuncao(Map<String, List<Funcionario>> mapFuncionarios) {
         Set<String> chaves = mapFuncionarios.keySet();
         for (String chave : chaves) {
-            System.out.println(chave);
+            System.out.println("Função: " + chave);
             System.out.println("Funcionários: ");
             System.out.println("Nome\tData Nascimento\tSalário\t\t\tFunção");
             for (Funcionario f : mapFuncionarios.get(chave)) {
