@@ -49,11 +49,24 @@ public class Main {
             throw new RuntimeException(e);
         }
 
+        System.out.println("Todos os funcionários: ");
+        listarFuncionarios(listaDeFuncionarios);
+
+        // 3.2 Remover o funcionário João
+        listaDeFuncionarios.removeIf(f -> f.getNome().equals("João"));
+        System.out.println("Funcionário João Removido: ");
+        listarFuncionarios(listaDeFuncionarios);
+
+
+
+    }
+
+    private static void listarFuncionarios(List<Funcionario> lista) {
         System.out.println("Nome\tData Nascimento\tSalário\t\tFunção");
-        for (Funcionario f : listaDeFuncionarios) {
+        for (Funcionario f : lista) {
             System.out.println(f);
         }
-
-
+        System.out.println("---------------------------------------------------------");
+        System.out.println();
     }
 }
