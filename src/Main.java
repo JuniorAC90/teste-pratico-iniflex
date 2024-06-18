@@ -64,6 +64,9 @@ public class Main {
         // 3.5 Agrupando os funcionários por função
         Map<String, List<Funcionario>> funcionariosAgrupados = agruparFuncionariosPorFuncao(listaDeFuncionarios);
         System.out.println(funcionariosAgrupados);
+
+        // 3.6 Imprimindo os funcionários agrupados por função
+        listarFuncionariosAgrupadosPorFuncao(funcionariosAgrupados);
     }
 
     private static void listarFuncionarios(List<Funcionario> lista) {
@@ -92,6 +95,19 @@ public class Main {
            }
         }
         return mapFuncionarios;
+    }
+
+    private static void listarFuncionariosAgrupadosPorFuncao(Map<String, List<Funcionario>> mapFuncionarios) {
+        Set<String> chaves = mapFuncionarios.keySet();
+        for (String chave : chaves) {
+            System.out.println(chave);
+            System.out.println("Funcionários: ");
+            System.out.println("Nome\tData Nascimento\tSalário\t\t\tFunção");
+            for (Funcionario f : mapFuncionarios.get(chave)) {
+                System.out.println(f);
+            }
+            System.out.println();
+        }
     }
 
 }
