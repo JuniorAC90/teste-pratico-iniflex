@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 
-public class Funcionario extends Pessoa {
+public class Funcionario extends Pessoa implements Comparable <Pessoa> {
     private BigDecimal salario;
     private String funcao;
 
@@ -28,7 +28,7 @@ public class Funcionario extends Pessoa {
         return funcao;
     }
 
-    public void aumentarDezPorCentoDoSalário() {
+    public void aumentarDezPorCentoDoSalario() {
         BigDecimal dezPorCentoDoSalario = this.getSalario().multiply(new BigDecimal("0.10"));
         this.salario = this.getSalario().add(dezPorCentoDoSalario);
     }
@@ -39,5 +39,10 @@ public class Funcionario extends Pessoa {
                 this.getDataNascimentoFormatada() + "\t\t" +
                 this.getSalarioFormatado() + "\t\t" +
                 this.getFuncao();
+    }
+
+    @Override
+    public int compareTo(Pessoa pessoa) {
+        return this.getNome().compareTo(pessoa.getNome());
     }
 }

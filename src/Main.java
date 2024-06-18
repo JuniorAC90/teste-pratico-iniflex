@@ -64,7 +64,6 @@ public class Main {
 
         // 3.5 Agrupando os funcionários por função
         Map<String, List<Funcionario>> funcionariosAgrupados = agruparFuncionariosPorFuncao(listaDeFuncionarios);
-        System.out.println(funcionariosAgrupados);
 
         // 3.6 Imprimindo os funcionários agrupados por função
         listarFuncionariosAgrupadosPorFuncao(funcionariosAgrupados);
@@ -74,6 +73,11 @@ public class Main {
 
         // 3.9 Imprimindo o funcionário com a maior idade
         imprimirFuncionarioComMaiorIdade(listaDeFuncionarios);
+
+        // 3.10 Imprimindo a lista em ordem alfabética
+        Collections.sort(listaDeFuncionarios);
+        System.out.println("Todos os funcionários em ordem alfabética: ");
+        listarFuncionarios(listaDeFuncionarios);
     }
 
     private static void listarFuncionarios(List<Funcionario> lista) {
@@ -87,7 +91,7 @@ public class Main {
 
     private static void aumentarDezPorCentoDaListaDeFuncionarios(List<Funcionario> lista) {
         for (Funcionario f : lista) {
-            f.aumentarDezPorCentoDoSalário();
+            f.aumentarDezPorCentoDoSalario();
         }
     }
 
