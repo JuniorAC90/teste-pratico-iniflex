@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -67,6 +68,12 @@ public class Main {
 
         // 3.6 Imprimindo os funcionários agrupados por função
         listarFuncionariosAgrupadosPorFuncao(funcionariosAgrupados);
+
+        // 3.8 Imprimindo os funcionários que fazem aniversário no mês 10 e 12
+        listarFuncionariosAniversariantesMes10e12(listaDeFuncionarios);
+
+        // 3.9 Imprimindo o funcionário com a maior idade
+        imprimirFuncionarioComMaiorIdade(listaDeFuncionarios);
     }
 
     private static void listarFuncionarios(List<Funcionario> lista) {
@@ -108,6 +115,43 @@ public class Main {
             }
             System.out.println();
         }
+    }
+
+    private static void listarFuncionariosAniversariantesMes10e12(List<Funcionario> lista) {
+        System.out.println("Lista de funcionários que fazem aniversário no mês 10 e 12.");
+        System.out.println("Nome\tData Nascimento\tSalário\t\t\tFunção");
+        for (Funcionario f : lista) {
+            if (f.getDataNascimento().getMonth().equals(Month.OCTOBER)
+                    || f.getDataNascimento().getMonth().equals(Month.DECEMBER))
+                System.out.println(f);
+        }
+        System.out.println("---------------------------------------------------------");
+        System.out.println();
+    }
+
+    private static void imprimirFuncionarioComMaiorIdade(List<Funcionario> lista) {
+        System.out.println("Funcionário com Maior idade: ");
+        System.out.println("Nome\tIdade");
+        Integer maiorIdade = null;
+        Funcionario funcionariocomMaiorIdade = null;
+        for (Funcionario f : lista) {
+            if (maiorIdade == null) {
+                maiorIdade = f.getIdade();
+                funcionariocomMaiorIdade = f;
+            } else {
+                if (f.getIdade() > maiorIdade) {
+                    maiorIdade = f.getIdade();
+                    funcionariocomMaiorIdade = f;
+                }
+            }
+        }
+
+        if (funcionariocomMaiorIdade != null) {
+            System.out.println(funcionariocomMaiorIdade.getNome() + "\t" + funcionariocomMaiorIdade.getIdade());
+        }
+
+        System.out.println("---------------------------------------------------------");
+        System.out.println();
     }
 
 }
