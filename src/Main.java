@@ -7,9 +7,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -62,6 +60,10 @@ public class Main {
         aumentarDezPorCentoDaListaDeFuncionarios(listaDeFuncionarios);
         System.out.println("Lista de funcionários atualizada com o aumento salarial.");
         listarFuncionarios(listaDeFuncionarios);
+
+        // 3.5 Agrupando os funcionários por função
+        Map<String, List<Funcionario>> funcionariosAgrupados = agruparFuncionariosPorFuncao(listaDeFuncionarios);
+        System.out.println(funcionariosAgrupados);
     }
 
     private static void listarFuncionarios(List<Funcionario> lista) {
@@ -77,6 +79,19 @@ public class Main {
         for (Funcionario f : lista) {
             f.aumentarDezPorCentoDoSalário();
         }
+    }
+
+    private static Map<String, List<Funcionario>> agruparFuncionariosPorFuncao(List<Funcionario> lista) {
+        Map<String, List<Funcionario>> mapFuncionarios = new HashMap<>();
+        for (Funcionario f : lista) {
+           if (!mapFuncionarios.containsKey(f.getFuncao())) {
+               mapFuncionarios.put(f.getFuncao(), new ArrayList<>());
+               mapFuncionarios.get(f.getFuncao()).add(f);
+           } else {
+               mapFuncionarios.get(f.getFuncao()).add(f);
+           }
+        }
+        return mapFuncionarios;
     }
 
 }
